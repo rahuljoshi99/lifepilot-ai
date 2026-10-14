@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifePilot AI | Personal Productivity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2 class="logo">LifePilot <span>AI</span></h2>
+
+            <nav>
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#tasks" class="nav-link">My Tasks</a>
+                <a href="#ai-assistant" class="nav-link">AI Assistant</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Personal Productivity</p>
+                <small>Powered by Ollama AI</small>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+                    <h1>Good day! 👋</h1>
+                    <p class="subtitle">Let's make today productive.</p>
+                </div>
+
+                <div
+                    class="status-badge"
+                    id="api-status"
+                    role="status"
+                    aria-live="polite"
+                    aria-label="API Connected"
+                >
+                    <span class="status-dot" id="api-status-dot"></span>
+                    <span id="api-status-text">API Connected</span>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <p>Total Tasks</p>
+                    <h2 id="total-tasks">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <p>Completed</p>
+                    <h2 id="completed-tasks">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <p>Pending</p>
+                    <h2 id="pending-tasks">0</h2>
+                </article>
+            </section>
+
+            <!-- AI Assistant -->
+            <section class="task-section ai-section" id="ai-assistant">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR PERSONAL AI</p>
+                        <h2>LifePilot Assistant ✨</h2>
+                        <p class="subtitle">
+                            Plan your day, get ideas, and organize your work.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="chat-messages"
+                    id="chat-messages"
+                    role="log"
+                    aria-live="polite"
+                    aria-label="AI conversation"
+                >
+                    <div class="chat-message assistant-message">
+                        <strong>LifePilot AI</strong>
+                        <p>
+                            Hey! I'm your personal productivity assistant.
+                            Ask me for help planning your day or organizing
+                            your tasks.
+                        </p>
+                    </div>
+                </div>
+
+                <form id="chat-form" class="chat-form">
+                    <textarea
+                        id="chat-input"
+                        placeholder="Ask LifePilot anything..."
+                        rows="2"
+                        maxlength="4000"
+                        required
+                        aria-label="Message for LifePilot AI"
+                    ></textarea>
+
+                    <button type="submit" id="chat-send-button">
+                        Send Message
+                    </button>
+                </form>
+
+                <p
+                    id="chat-status"
+                    class="message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+            </section>
+
+            <!-- Task Management -->
+            <section class="task-section" id="tasks">
+                <div class="section-heading">
+                    <div>
+                        <h2>My Tasks</h2>
+                        <p class="subtitle">Organize what matters today.</p>
+                    </div>
+                </div>
+
+                <div class="task-filters">
+                    <select id="status-filter" aria-label="Filter tasks by status">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending Tasks</option>
+                        <option value="completed">Completed Tasks</option>
+                    </select>
+
+                    <select id="priority-filter" aria-label="Filter tasks by priority">
+                        <option value="all">All Priorities</option>
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+
+                <form id="task-form" class="task-form">
+                    <input
+                        type="text"
+                        id="task-title"
+                        placeholder="What do you need to do?"
+                        maxlength="200"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="task-description"
+                        placeholder="Description (optional)"
+                        maxlength="1000"
+                    >
+
+                    <select id="task-priority" required>
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+
+                    <input
+                        type="date"
+                        id="task-due-date"
+                        aria-label="Task due date"
+                    >
+
+                    <button type="submit">+ Add Task</button>
+                </form>
+
+                <p
+                    id="message"
+                    class="message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <div id="task-list" class="task-list">
+                    <p class="empty-state">
+                        Your tasks will appear here.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
